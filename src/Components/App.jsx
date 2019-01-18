@@ -1,0 +1,39 @@
+import React, { PureComponent, Fragment } from 'react';
+
+import Header from './Header';
+import Post from './Posts';
+import posts from '../tempPostData.json';
+
+import './App.less';
+
+export default class extends PureComponent {
+  static displayName = 'App';
+
+  state = { posts, search: '' };
+
+  getPosts = () => {
+    const { search, posts } = this.state;
+    if (!search) return posts;
+
+    return posts.filter(({ username }) => {
+      return username.includes(search);
+    });
+  };
+
+  searchHandler = search => {
+    this.setState({ search });
+  };
+
+  render() {
+    return (
+      <Fragment>
+        <Header searchHandler={this.searchHandler} />
+        <main className="posts-wrapper">
+          {this.getPosts().map(post => (
+            <Post key={post.timestamp} {...post} />
+          ))}
+        </main>
+      </Fragment>
+    );
+  }
+}

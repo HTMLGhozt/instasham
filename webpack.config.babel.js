@@ -21,12 +21,32 @@ export default {
     rules: [
       {
         test: /\.jsx?$/,
+        resolve: {
+          extensions: ['*', '.js', '.jsx'],
+        },
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
           cacheDirectory: true,
           presets: ['@babel/react'],
         },
+      },
+      {
+        test: /\.less$/,
+        resolve: {
+          extensions: ['.less'],
+        },
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader', // translates CSS into CommonJS
+          },
+          {
+            loader: 'less-loader', // compiles Less to CSS
+          },
+        ],
       },
     ],
   },
