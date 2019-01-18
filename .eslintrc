@@ -1,5 +1,8 @@
 {
-  "extends": [ "eslint:recommended" ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "env": {
     "es6": true,
     "browser": true,
@@ -13,8 +16,15 @@
       "jsx": true
     }
   },
-  "plugins": ["babel"],
+  "plugins": ["babel", "react"],
   "rules": {
     "no-console": ["error", { "allow": ["warn", "error", "info"] }]
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect",
+      "flowVersion": "detect"
+    }
   }
 }
