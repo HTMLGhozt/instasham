@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -21,11 +20,10 @@ export default class extends Component {
   }
 
   toggleLike = () => {
-    this.setState(
-      ({ likes, liked }: any): { likes: number, liked: boolean } =>
-        liked
-          ? { likes: likes - 1, liked: false }
-          : { likes: likes + 1, liked: true },
+    this.setState(({ likes, liked }) =>
+      liked
+        ? { likes: likes - 1, liked: false }
+        : { likes: likes + 1, liked: true },
     );
   };
 
