@@ -1,0 +1,28 @@
+version: '2'
+services:
+  web:
+    build:
+      context: ./
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app:rw
+    environment:
+      - NODE_ENV=dev
+    # Before you run this file for the first time, make sure
+    # you remove node_modules/ folders in your host machine
+    command: >
+      sh -c ' if test -d node_modules; then
+        echo node_modules_exists ;
+      else
+        cp -a /tmp/node_modules /usr/src/app/;
+      fi && npm install && npm run start:dev '
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     DATABASE_URL: postgres://todoapp@postgres/todos
+  # postgres:
+  #   image: postgres:9.6.2-alpine
+  #   environment:
+  #     POSTGRES_USER: todoapp
+  #     POSTGRES_DB: todos
