@@ -1,14 +1,16 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+const BUILD = path.resolve(__dirname, './dist');
+
 export default {
   mode: 'development',
   entry: path.resolve(__dirname, './src/index.js'),
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: BUILD,
   },
   devServer: {
-    contentBase: path.resolve(__dirname, './dist'),
+    contentBase: BUILD,
     port: 3000,
   },
   module: {
