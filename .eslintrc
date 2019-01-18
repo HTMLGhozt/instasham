@@ -16,7 +16,7 @@
       "jsx": true
     }
   },
-  "plugins": ["babel", "react"],
+  "plugins": ["babel", "react", "eslint-plugin-flowtype"],
   "rules": {
     "no-console": ["error", { "allow": ["warn", "error", "info"] }]
   },

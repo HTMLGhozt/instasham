@@ -1,36 +1,69 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const Header = ({ searchHandler }) => (
-  <header className="navigation-wrapper">
-    <nav className="main-navigation">
-      <a href="#" className="logo-container">
-        <i className="fab fa-instagram" />
-        <div className="vertical-rule" />
-        <h1 className="logo-container__title">Instasham</h1>
-      </a>
-      <div className="search">
-        <i className="search__icon fas fa-search" />
-        <input
-          className="search__input"
-          onChange={e => searchHandler(e.target.value)}
-          placeholder="Search"
-        />
-      </div>
-      <div className="main-navigation__icons">
-        <i className="far fa-compass" />
-        <i className="far fa-heart" />
-        <i className="far fa-user" />
-      </div>
-    </nav>
-  </header>
-);
+export default class extends Component {
+  static displayName = 'Header';
 
-Header.propTypes = {
-  searchHandler: PropTypes.func,
-};
-Header.defaultProps = {
-  searchHandler: () => {},
-};
+  static propTypes = {
+    searchHandler: PropTypes.func,
+  };
 
-export default Header;
+  static defaultProps = {
+    searchHandler: () => {},
+  };
+
+  state = {
+    smallHeader: false,
+  };
+
+  componentDidMount() {
+    document.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const { smallHeader } = this.state;
+    const shouldBeSmall = window.scrollY > 200;
+    if (shouldBeSmall && !smallHeader) {
+      this.setState({ smallHeader: true });
+    } else if (!shouldBeSmall && smallHeader) {
+      this.setState({ smallHeader: false });
+    }
+  };
+
+  render() {
+    const { searchHandler } = this.props;
+    const { smallHeader } = this.state;
+    return (
+      <header className="navigation-wrapper">
+        <nav
+          className={`main-navigation ${
+            smallHeader ? 'main-navigation--small' : ''
+          }`}
+        >
+          <a href="#" className="logo-container">
+            <i className="fab fa-instagram" />
+            <div className="vertical-rule" />
+            <h1 className="logo-container__title">Instasham</h1>
+          </a>
+          <div className="search">
+            <input
+              className="search__input"
+              onChange={e => searchHandler(e.target.value)}
+              placeholder="Search"
+            />
+            <i className="search__icon fas fa-search" />
+          </div>
+          <div className="main-navigation__icons">
+            <i className="far fa-compass" />
+            <i className="far fa-heart" />
+            <i className="far fa-user" />
+          </div>
+        </nav>
+      </header>
+    );
+  }
+}

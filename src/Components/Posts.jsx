@@ -1,3 +1,4 @@
+// @flow
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
@@ -53,7 +54,9 @@ export default class extends PureComponent {
     return (
       <article className="post">
         <header className="post__header">
-          <img className="post__thumbnail" src={thumbnailUrl} />
+          <div className="post__thumbnail">
+            <img className="post__thumbnail__image" src={thumbnailUrl} />
+          </div>
           <h4 className="post__username">{username}</h4>
         </header>
         <img className="post__image" src={imageUrl} />
