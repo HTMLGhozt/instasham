@@ -12,8 +12,7 @@
     "flow": "flow",
     "format": "npm run prettier -- --write",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|md|graphql|mdx)\"",
-    "validate": "npm run lint && npm run prettier -- --list-different && npm run flow",
-    "precommit": "lint-staged && npm run flow"
+    "validate": "npm run lint && npm run prettier -- --list-different && npm run flow"
   },
   "keywords": [
     "instagram"
@@ -50,5 +49,10 @@
     "moment": "^2.23.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run flow"
+    }
   }
 }
