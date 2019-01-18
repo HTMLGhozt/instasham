@@ -1,4 +1,5 @@
 import path from 'path';
+import { HotModuleReplacementPlugin } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const BUILD = path.resolve(__dirname, './dist');
@@ -9,9 +10,11 @@ export default {
   output: {
     path: BUILD,
   },
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: BUILD,
     port: 3000,
+    hot: true,
   },
   module: {
     rules: [
@@ -27,6 +30,7 @@ export default {
     ],
   },
   plugins: [
+    new HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'testing',
       template: 'public/index.html',
