@@ -4,8 +4,6 @@ import Header from './Header';
 import Post from './Posts';
 import posts from '../tempPostData.json';
 
-import './App.less';
-
 export default class extends PureComponent {
   static displayName = 'App';
 

@@ -26,7 +26,7 @@ export default class extends Component {
 
   handleScroll = () => {
     const { smallHeader } = this.state;
-    const shouldBeSmall = window.scrollY > 200;
+    const shouldBeSmall = window.scrollY > 100;
     if (shouldBeSmall && !smallHeader) {
       this.setState({ smallHeader: true });
     } else if (!shouldBeSmall && smallHeader) {

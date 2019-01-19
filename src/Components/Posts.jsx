@@ -35,15 +35,16 @@ export default class extends PureComponent {
     this.setState({ comments });
   }
 
-  handleInput = text => {
-    this.setState({ text });
-  };
-
   handleSubmit = event => {
     event.preventDefault();
-    this.setState(({ comments, text }) => ({
-      comments: [...comments, { username: 'Thomas', text }],
-      text: '',
+    const comment = {
+      username: 'Thomas',
+      text: this.input.value,
+    };
+    this.input.value = '';
+
+    this.setState(({ comments }) => ({
+      comments: [...comments, comment],
     }));
   };
 
@@ -63,10 +64,9 @@ export default class extends PureComponent {
         <CommentContainer comments={comments} timestamp={timestamp} />
         <form onSubmit={this.handleSubmit}>
           <input
-            ref={r => (this.input = r)}
-            onChange={e => this.handleInput(e.target.value)}
             className="comment__input"
-            placeholder="add a comment..."
+            ref={r => (this.input = r)}
+            placeholder="Add a comment..."
             autoComplete="off"
           />
         </form>

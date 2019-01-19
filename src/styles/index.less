@@ -1,0 +1,50 @@
+@import 'reset.css';
+
+@light-background: #fafafa;
+@light-border: rgb(230, 230, 230);
+@gray-icon: #a0a0a0;
+@focused-background: #ffffff;
+@gray-rule: #666666;
+@icon-font-size: 1.85rem;
+@black: rgb(38, 38, 38);
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  color: @black;
+}
+body {
+  min-width: 300px;
+}
+
+i {
+  font-size: @icon-font-size;
+  cursor: pointer;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.vertical-rule {
+  background-color: @gray-rule;
+  height: 2rem;
+  width: 0.75px;
+}
+.icon-inverse {
+  transform: scaleX(-1);
+  filter: FlipH;
+}
+.username {
+  font-weight: bold;
+}
+
+@import 'components/_navigation.less';
+@import 'components/_posts.less';
+@import 'components/_comments.less';
