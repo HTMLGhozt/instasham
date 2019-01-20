@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 
 import Header from './Header';
 import Post from './Posts';
+import Aside from './Sidebar';
 import posts from '../tempPostData.json';
 
 export default class extends PureComponent {
@@ -26,10 +27,13 @@ export default class extends PureComponent {
     return (
       <Fragment>
         <Header searchHandler={this.searchHandler} />
-        <main className="posts-wrapper">
-          {this.getPosts().map(post => (
-            <Post key={post.timestamp} {...post} />
-          ))}
+        <main className="content-wrapper">
+          <div className="posts-wrapper">
+            {this.getPosts().map(post => (
+              <Post key={post.timestamp} {...post} />
+            ))}
+          </div>
+          <Aside />
         </main>
       </Fragment>
     );

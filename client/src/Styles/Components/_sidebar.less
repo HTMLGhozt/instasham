@@ -1,0 +1,157 @@
+.sidebar-wrapper {
+  position: sticky;
+  top: 80px;
+  width: 300px;
+  max-height: 80vh;
+
+  @media (max-width: 999px) {
+    display: none;
+  }
+}
+
+.profile {
+  display: flex;
+  margin-left: 5px;
+
+  &__thumbnail {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 15px;
+  }
+
+  &__username {
+    .username();
+    margin-bottom: 5px;
+  }
+
+  &__legal-name {
+    display: block;
+    text-transform: capitalize;
+    font-size: 0.75rem;
+    color: @gray-icon;
+  }
+}
+
+.sidebar__card {
+  .card();
+  border-radius: 4px;
+  width: 100%;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    padding: 17px 17px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    font-weight: 500;
+    color: @gray-icon;
+  }
+
+  &__action {
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+
+  &--stories__container {
+    padding: 0 17px;
+    overflow: hidden auto;
+    flex: 1;
+    max-height: 180px;
+  }
+
+  &--suggestions__container {
+    padding: 0 17px 10px;
+    flex: 1;
+  }
+}
+
+.story {
+  display: flex;
+  justify-content: baseline;
+  margin: 10px 0;
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__thumbnail {
+    .thumbnail();
+  }
+
+  &__username {
+    .username();
+    margin-bottom: 5px;
+  }
+
+  &__timestamp {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: @gray-icon;
+  }
+}
+
+.suggestion {
+  display: flex;
+  justify-content: baseline;
+  margin: 10px 0;
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__thumbnail {
+    .thumbnail();
+  }
+
+  &__username {
+    .username();
+    margin-bottom: 5px;
+  }
+
+  &__reason {
+    display: block;
+    font-size: 0.85rem;
+    color: @gray-icon;
+  }
+}
+
+.sidebar__footer {
+  &__navigation {
+    display: flex;
+    flex-wrap: wrap;
+
+    a {
+      color: rgb(200, 200, 200);
+      text-decoration: none;
+      font-size: 0.8rem;
+      line-height: 17px;
+
+      &::after {
+        content: ' · ';
+        white-space: pre;
+      }
+
+      &:last-of-type::after {
+        content: '';
+      }
+    }
+  }
+}

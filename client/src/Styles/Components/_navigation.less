@@ -6,8 +6,10 @@
   background-color: #ffffff;
   z-index: 100;
 }
+
 .main-navigation {
   transition: padding 0.35s, opacity 0.35s;
+
   .flex-center();
   padding: 20px;
   max-width: 1000px;
@@ -26,9 +28,11 @@
     &__title {
       transition: padding 0.35s, opacity 0.35s 0.05s, margin 0.35s;
       font-size: 2.5rem;
-      font-family: 'Cookie', cursive;
+      font-family: Cookie, cursive;
     }
+
     .vertical-rule {
+      .vertical-rule();
       transition: padding 0.35s, opacity 0.35s;
     }
 
@@ -62,6 +66,7 @@
       &:focus {
         padding-left: 25px;
         text-align: start;
+
         & ~ i {
           left: 10px;
         }
@@ -88,6 +93,7 @@
 
   &--small {
     padding: 10px 20px;
+
     .logo-container {
       &__title,
       .vertical-rule {

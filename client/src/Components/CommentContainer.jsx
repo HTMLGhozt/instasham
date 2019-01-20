@@ -3,7 +3,6 @@ import PropType from 'prop-types';
 import moment from 'moment';
 
 const CommentContainer = ({ timestamp, comments }) => {
-  // static displayName = 'CommentContainer';
   const nostalgicTimestamp = moment(
     timestamp,
     'MMMDD YYYY HH:mm:ss a',
@@ -18,7 +17,7 @@ const CommentContainer = ({ timestamp, comments }) => {
           <span>{text}</span>
         </div>
       ))}
-      <span className="post__timestamp">{nostalgicTimestamp}</span>
+      <time className="post__timestamp">{nostalgicTimestamp}</time>
     </footer>
   );
 };

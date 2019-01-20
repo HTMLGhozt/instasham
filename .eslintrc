@@ -23,7 +23,7 @@
   "settings": {
     "react": {
       "pragma": "React",
-      "version": "detect",
+      "version": "16.7",
       "flowVersion": "detect"
     }
   }
