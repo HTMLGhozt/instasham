@@ -20,7 +20,7 @@ export default {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.jsx?$/i,
         resolve: {
           extensions: ['*', '.js', '.jsx'],
         },

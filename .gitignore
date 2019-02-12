@@ -2,7 +2,11 @@
 .cache
 node_modules
 yarn-error.log
+vendor/ruby
 
 # Build directory
 /dist
+
+# filename
 .DS_Store
+*.swp
