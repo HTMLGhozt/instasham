@@ -1,16 +1,16 @@
+// @flow
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
-export default class extends Component {
+type Props = {
+  searchHandler: (search: string) => void,
+};
+
+type State = {
+  smallHeader: boolean,
+};
+
+export default class extends Component<Props, State> {
   static displayName = 'Header';
-
-  static propTypes = {
-    searchHandler: PropTypes.func,
-  };
-
-  static defaultProps = {
-    searchHandler: () => {},
-  };
 
   state = {
     smallHeader: false,

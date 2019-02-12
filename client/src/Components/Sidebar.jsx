@@ -1,61 +1,13 @@
+// @flow
 import React, { Component } from 'react';
 import moment from 'moment';
 
-const stories = [
-  {
-    username: 'bob',
-    timestamp: 'July 17th 2017, 12:42:40 pm',
-    thumbnailUrl:
-      'https://tk-assets.lambdaschool.com/ce601fdf-7cb0-4098-83d3-1a1584a72513_30841289_342445456281079_112845064497004544_n.jpg',
-  },
-  {
-    username: 'joe',
-    timestamp: 'July 17th 2017, 12:42:40 pm',
-    thumbnailUrl:
-      'https://tk-assets.lambdaschool.com/ce601fdf-7cb0-4098-83d3-1a1584a72513_30841289_342445456281079_112845064497004544_n.jpg',
-  },
-  {
-    username: 'jeff',
-    timestamp: 'July 17th 2017, 12:42:40 pm',
-    thumbnailUrl:
-      'https://tk-assets.lambdaschool.com/ce601fdf-7cb0-4098-83d3-1a1584a72513_30841289_342445456281079_112845064497004544_n.jpg',
-  },
-  {
-    username: 'josh',
-    timestamp: 'July 17th 2017, 12:42:40 pm',
-    thumbnailUrl:
-      'https://tk-assets.lambdaschool.com/ce601fdf-7cb0-4098-83d3-1a1584a72513_30841289_342445456281079_112845064497004544_n.jpg',
-  },
-  {
-    username: 'bob',
-    timestamp: 'July 17th 2017, 12:42:40 pm',
-    thumbnailUrl:
-      'https://tk-assets.lambdaschool.com/ce601fdf-7cb0-4098-83d3-1a1584a72513_30841289_342445456281079_112845064497004544_n.jpg',
-  },
-  {
-    username: 'joe',
-    timestamp: 'July 17th 2017, 12:42:40 pm',
-    thumbnailUrl:
-      'https://tk-assets.lambdaschool.com/ce601fdf-7cb0-4098-83d3-1a1584a72513_30841289_342445456281079_112845064497004544_n.jpg',
-  },
-  {
-    username: 'jeff',
-    timestamp: 'July 17th 2017, 12:42:40 pm',
-    thumbnailUrl:
-      'https://tk-assets.lambdaschool.com/ce601fdf-7cb0-4098-83d3-1a1584a72513_30841289_342445456281079_112845064497004544_n.jpg',
-  },
-  {
-    username: 'josh',
-    timestamp: 'July 17th 2017, 12:42:40 pm',
-    thumbnailUrl:
-      'https://tk-assets.lambdaschool.com/ce601fdf-7cb0-4098-83d3-1a1584a72513_30841289_342445456281079_112845064497004544_n.jpg',
-  },
-];
+import stories from '../tempData/tempStoryData.json';
 
-export default class extends Component {
+export default class extends Component<{}> {
   static displayName = 'Aside';
 
-  nostalgicTimestamp = timestamp =>
+  nostalgicTimestamp = (timestamp: string) =>
     moment(timestamp, 'MMMDD YYYY HH:mm:ss a', 'en').fromNow();
 
   render() {

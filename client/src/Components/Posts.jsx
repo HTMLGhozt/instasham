@@ -1,51 +1,45 @@
+// @flow
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 
 import CommentContainer from './CommentContainer';
 import SocialBar from './SocialBar';
 
-export default class extends PureComponent {
+import type { Comment, PostObj } from './defaultFlow';
+
+type Props = PostObj;
+
+type State = {
+  comments: Array<Comment>,
+  text: string,
+};
+
+export default class extends PureComponent<Props, State> {
   static displayName = 'Post';
-
-  static propTypes = {
-    username: PropTypes.string.isRequired,
-    thumbnailUrl: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    likes: PropTypes.number.isRequired,
-    timestamp: PropTypes.string.isRequired,
-    comments: PropTypes.arrayOf(
-      PropTypes.shape({
-        username: PropTypes.string,
-        text: PropTypes.string,
-      }),
-    ),
-  };
-
-  static defaultProps = {
-    comments: [],
-  };
 
   state = {
     comments: [],
     text: '',
   };
 
+  input: React$ElementRef<any> | React$ElementRef<'input'> = React.createRef();
+
   componentDidMount() {
     const { comments } = this.props;
     this.setState({ comments });
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const comment = {
-      username: 'Thomas',
-      text: this.input.value,
-    };
-    this.input.value = '';
-
     this.setState(({ comments }) => ({
-      comments: [...comments, comment],
+      comments: [
+        ...comments,
+        {
+          username: 'Thomas',
+          text: this.input.value,
+        },
+      ],
     }));
+    this.input.value = '';
   };
 
   render() {

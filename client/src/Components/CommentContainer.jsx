@@ -1,39 +1,26 @@
+// @flow
 import React from 'react';
-import PropType from 'prop-types';
 import moment from 'moment';
+import type { Comment } from './defaultFlow';
 
-const CommentContainer = ({ timestamp, comments }) => {
-  const nostalgicTimestamp = moment(
-    timestamp,
-    'MMMDD YYYY HH:mm:ss a',
-    'en',
-  ).fromNow();
+type Props = {|
+  timestamp: string,
+  comments: Array<Comment>,
+|};
 
-  return (
-    <footer className="comment-wrapper">
-      {comments.map(({ username, text }) => (
-        <div key={username + text} className="comment">
-          <h4 className="comment__username">{username}</h4>
-          <span>{text}</span>
-        </div>
-      ))}
-      <time className="post__timestamp">{nostalgicTimestamp}</time>
-    </footer>
-  );
-};
+const getNostalgicTimestamp = (timestamp: string) =>
+  moment(timestamp, 'MMMDD YYYY HH:mm:ss a', 'en').fromNow();
 
-CommentContainer.propTypes = {
-  timestamp: PropType.string.isRequired,
-  comments: PropType.arrayOf(
-    PropType.shape({
-      username: PropType.string,
-      text: PropType.string,
-    }),
-  ),
-};
-
-CommentContainer.defaultProps = {
-  comments: [],
-};
+const CommentContainer = ({ timestamp, comments }: Props) => (
+  <footer className="comment-wrapper">
+    {comments.map(({ username, text }) => (
+      <div key={username + text} className="comment">
+        <h4 className="comment__username">{username}</h4>
+        <span>{text}</span>
+      </div>
+    ))}
+    <time className="post__timestamp">{getNostalgicTimestamp(timestamp)}</time>
+  </footer>
+);
 
 export default CommentContainer;

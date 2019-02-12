@@ -18,7 +18,8 @@
   },
   "plugins": ["babel", "react", "eslint-plugin-flowtype"],
   "rules": {
-    "no-console": ["error", { "allow": ["warn", "error", "info"] }]
+    "no-console": ["error", { "allow": ["warn", "error", "info"] }],
+    "react/prop-types": [0]
   },
   "settings": {
     "react": {

@@ -1,13 +1,18 @@
+// @flow
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
-export default class extends Component {
+type Props = {
+  likes: number,
+  input: React$ElementRef<'input'>,
+};
+
+type State = {
+  likes: number,
+  liked: boolean,
+};
+
+export default class extends Component<Props, State> {
   static displayName = 'SocialBar';
-
-  static propTypes = {
-    likes: PropTypes.number.isRequired,
-    input: PropTypes.object,
-  };
 
   state = {
     likes: 0,
@@ -32,7 +37,7 @@ export default class extends Component {
     const { input } = this.props;
     const likeClass = `
       fa${liked ? 's' : 'r'} fa-heart${' '}
-      ${liked && 'social-bar__icons--red'}
+      ${liked ? 'social-bar__icons--red' : ''}
     `;
     return (
       <section className="social-bar">

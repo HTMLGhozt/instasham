@@ -1,16 +1,24 @@
+// @flow
 import React, { PureComponent, Fragment } from 'react';
 
 import Header from './Header';
 import Post from './Posts';
 import Aside from './Sidebar';
-import posts from '../tempPostData.json';
+import posts from '../tempData/tempPostData.json';
 
-export default class extends PureComponent {
+import type { PostObj } from './defaultFlow';
+
+type State = {|
+  posts: Array<PostObj>,
+  search: string,
+|};
+
+export default class extends PureComponent<{}, State> {
   static displayName = 'App';
 
   state = { posts, search: '' };
 
-  getPosts = () => {
+  getPosts = (): Array<PostObj> => {
     const { search, posts } = this.state;
     if (!search) return posts;
 
@@ -19,7 +27,7 @@ export default class extends PureComponent {
     });
   };
 
-  searchHandler = search => {
+  searchHandler = (search: string) => {
     this.setState({ search });
   };
 
