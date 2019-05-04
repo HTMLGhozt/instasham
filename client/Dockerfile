@@ -1,14 +1,23 @@
 ### STAGE 1: Build ###
-FROM node:alpine as build
+FROM node:alpine
 
 ENV NPM_CONFIG_LOGLEVEL warn
 
 WORKDIR /tmp
-COPY /package*.json ./
-RUN npm config set registry http://registry.npmjs.org/ && npm install --no-progress --ignore-optional
+COPY ./package*.json /tmp/
+RUN npm install --no-progress
+
+RUN mkdir -p /usr/src/app
+RUN mv /tmp/* /usr/src/app
+COPY . /usr/src/app
 
 WORKDIR /usr/src/app
-COPY . /usr/src/app
-ENV PORT=3000
+# RUN ls -a
+# RUN cat ./node_modules/.bin/webpack-dev-server
 EXPOSE 3000
-CMD ["npm", "run", "start"]
+ENV PORT=3000
+
+# RUN npm start
+# ENTRYPOINT ["cat"]
+CMD npm start
+# ENTRYPOINT node ./node_modules/.bin/webpack-dev-server

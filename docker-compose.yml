@@ -3,21 +3,22 @@ version: '3'
 services:
   # Setup Client
   web:
-    build: ./client/
+    build: ./client
     ports:
-      - '3000:3000'
+      - 3000:3000
     volumes:
       - .:/usr/src/app:rw
-    environment:
-      - NODE_ENV=dev
-    # Before you run this file for the first time, make sure
-    # you remove node_modules/ folders in your host machine
-    # command: >
-    #   sh -c ' if test -d node_modules; then
-    #     echo node_modules_exists ;
-    #   else
-    #     cp -a /tmp/node_modules /usr/src/app/;
-    #   fi && npm run start '
+      # - node_modules:/src/node_modules
+      # - NODE_ENV=dev
+  # Before you run this file for the first time, make sure
+  # you remove node_modules/ folders in your host machine
+  # command: >
+  #   sh -c ' if test -d node_modules; then
+  #     echo node_modules_exists ;
+  #   else
+  #     cp -a /tmp/node_modules /usr/src/app/;
+  #   fi && npm run start '
+
   #   depends_on:
   #     - postgres
   #   environment:
@@ -27,3 +28,4 @@ services:
   #   environment:
   #     POSTGRES_USER: todoapp
   #     POSTGRES_DB: todos
+  # command:
