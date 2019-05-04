@@ -19,5 +19,5 @@ ENV PORT=3000
 
 # RUN npm start
 # ENTRYPOINT ["cat"]
-CMD npm start
+CMD ["npm", "start"]
 # ENTRYPOINT node ./node_modules/.bin/webpack-dev-server
