@@ -4,21 +4,13 @@ services:
   # Setup Client
   web:
     build: ./client
+    image: instasham
     ports:
-      - 3000:3000
+      - '3000:3000'
     volumes:
-      - .:/usr/src/app:rw
-      # - node_modules:/src/node_modules
-      # - NODE_ENV=dev
-  # Before you run this file for the first time, make sure
-  # you remove node_modules/ folders in your host machine
-  # command: >
-  #   sh -c ' if test -d node_modules; then
-  #     echo node_modules_exists ;
-  #   else
-  #     cp -a /tmp/node_modules /usr/src/app/;
-  #   fi && npm run start '
-
+      - ./client/src:/usr/src/app/src:rw
+    environment:
+      - CHOKIDAR_USEPOLLING=true
   #   depends_on:
   #     - postgres
   #   environment:
