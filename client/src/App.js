@@ -1,9 +1,10 @@
+import { hot } from 'react-hot-loader/root';
 import React, { Fragment, useState } from 'react';
 
-import Header from './Header';
-import Post from './Posts';
-import Aside from './Sidebar';
-import tempPosts from '../tempPostData.json';
+import Header from './Components/Header';
+import Post from './Components/Posts';
+import Aside from './Components/Sidebar';
+import tempPosts from './tempPostData.json';
 
 const getPosts = (posts, search) =>
   posts.filter(({ username }) => username.includes(search));
@@ -27,4 +28,4 @@ function App() {
   );
 }
 
-export default App;
+export default hot(App);

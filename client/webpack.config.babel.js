@@ -1,21 +1,29 @@
 import path from 'path';
-import webpack from 'webpack';
+// import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const BUILD = path.resolve(__dirname, './dist');
 
 export default {
   mode: 'development',
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry: {
+    app: [
+      'babel-polyfill',
+      'react-hot-loader/patch',
+      path.resolve(__dirname, './src/index.js'),
+    ],
+  },
   output: {
     path: BUILD,
   },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   devServer: {
+    clientLogLevel: 'warning',
     contentBase: BUILD,
     host: '0.0.0.0',
     port: 3000,
     hot: true,
+    hotOnly: true,
   },
   module: {
     rules: [
@@ -24,12 +32,19 @@ export default {
         resolve: {
           extensions: ['*', '.js', '.jsx'],
         },
-        loader: 'babel-loader',
+        use: [
+          {
+            loader: 'react-hot-loader/webpack',
+          },
+          {
+            loader: 'babel-loader?presets[]=react',
+            query: {
+              cacheDirectory: true,
+              presets: ['@babel/react'],
+            },
+          },
+        ],
         exclude: /node_modules/,
-        query: {
-          cacheDirectory: true,
-          presets: ['@babel/react'],
-        },
       },
       {
         test: /\.less$/,
@@ -50,8 +65,13 @@ export default {
       },
     ],
   },
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
+  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'testing',
       template: 'public/index.html',
