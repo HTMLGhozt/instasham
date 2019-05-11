@@ -6,5 +6,5 @@
       "git add"
     ]
   },
-  "ignore": ["**/server(_rails)?/**/*"]
+  "ignore": ["server?\\w+/**/*.js"]
 }
