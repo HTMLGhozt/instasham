@@ -37,5 +37,6 @@
       "pre-commit": "lint-staged && npm run flow"
     }
   },
-  "dependencies": {}
+  "dependencies": {},
+  "proxy": "0.0.0.0:5000"
 }

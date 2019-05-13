@@ -1,4 +1,3 @@
-### STAGE 1: Build ###
 FROM node:alpine
 
 ENV NODE_ENV=dev

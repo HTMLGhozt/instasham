@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "blah": "start:dev\": \"webpack-dev-server --watch",
     "start": "http-server ./dist",
     "start:dev": "webpack-dev-server",
     "start:dev-local": "webpack-dev-server --open",
@@ -12,13 +11,11 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "classnames": "^2.2.6",
     "moment": "^2.23.0",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
-  },
-  "devDependencies": {
+    "react-dom": "^16.7.0",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/preset-env": "^7.2.3",

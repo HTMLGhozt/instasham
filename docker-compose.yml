@@ -11,6 +11,13 @@ services:
       - ./client/src:/usr/src/app/src:rw
     environment:
       - CHOKIDAR_USEPOLLING=true
+
+  server:
+    build: ./server_rails
+    image: rails
+    ports:
+      - '5000:5000'
+    # volumes
   #   depends_on:
   #     - postgres
   #   environment:
