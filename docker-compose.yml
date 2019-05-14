@@ -4,7 +4,6 @@ services:
   # Setup Client
   web:
     build: ./client
-    image: instasham
     ports:
       - '3000:3000'
     volumes:
@@ -13,11 +12,11 @@ services:
       - CHOKIDAR_USEPOLLING=true
 
   server:
-    build: ./server_rails
-    image: rails
+    build: ./server_api
     ports:
       - '5000:5000'
-    # volumes
+    volumes:
+      - ./server_api:/usr/src/app:rw
   #   depends_on:
   #     - postgres
   #   environment:
