@@ -12,18 +12,18 @@ services:
       - CHOKIDAR_USEPOLLING=true
 
   server:
-    build: ./server_api
+    build: ./server
     ports:
       - '5000:5000'
     volumes:
-      - ./server_api:/usr/src/app:rw
-  #   depends_on:
-  #     - postgres
-  #   environment:
-  #     DATABASE_URL: postgres://todoapp@postgres/todos
-  # postgres:
-  #   image: postgres:9.6.2-alpine
-  #   environment:
-  #     POSTGRES_USER: todoapp
-  #     POSTGRES_DB: todos
-  # command:
+      - ./server:/usr/src/server:rw
+    depends_on:
+      - db
+
+  # docker-compose run server rake db:create
+  db:
+    image: postgres:9.6.2-alpine
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: db

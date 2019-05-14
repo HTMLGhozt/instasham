@@ -6,6 +6,7 @@ vendor/ruby
 
 # Build directory
 /dist
+/tmp
 
 # filename
 .DS_Store

@@ -1,8 +1,9 @@
 FROM ruby:2.6.3
 
-RUN apt-get update && apt-get install -y \ 
-  build-essential \ 
-  nodejs
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  nodejs \
+  postgresql-client
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
